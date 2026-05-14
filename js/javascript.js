@@ -444,3 +444,62 @@ if (studioFilterButtons.length && studioSkillCards.length && studioSkillPanels.l
     // Au chargement, on affiche toutes les compétences
     filterStudioSkills('all')
 }
+
+// APPARITION PROGRESSIVE AU SCROLL
+
+// On récupère les éléments qui doivent apparaître progressivement au scroll
+const revealElements = document.querySelectorAll(`
+    .home__content,
+    .home__img-wrapper,
+    .about__img-wrapper,
+    .about__content,
+    .resume__group,
+    .services__item,
+    .skills__filter,
+    .skills__tech-zone,
+    .skills__tech-card,
+    .skills__insights,
+    .skills__panel,
+    .work__card,
+    .testimonials__item,
+    .contact__details,
+    .contact__form
+`)
+
+// Pour chaque élément à révéler
+revealElements.forEach((element, index) => {
+    // On ajoute la classe reveal pour cacher l'élément au départ
+    element.classList.add('reveal')
+
+    // On ajoute un petit délai différent pour rendre l'apparition plus fluide
+    element.style.transitionDelay = `${index * 0.02}s`
+})
+
+// On crée un observer pour détecter quand un élément entre dans l'écran
+const revealObserver = new IntersectionObserver(
+    // Fonction appelée quand les éléments observés changent d'état
+    (entries) => {
+        // On parcourt chaque élément observé
+        entries.forEach((entry) => {
+            // Si l'élément entre dans l'écran
+            if (entry.isIntersecting) {
+                // On ajoute la classe show pour afficher l'élément
+                entry.target.classList.add('show')
+
+                // On arrête d'observer cet élément après son apparition
+                revealObserver.unobserve(entry.target)
+            }
+        })
+    },
+    // Options de l'observer
+    {
+        // L'effet démarre quand 15% de l'élément est visible
+        threshold: 0.15
+    }
+)
+
+// On observe chaque élément qui doit apparaître au scroll
+revealElements.forEach((element) => {
+    // On lance l'observation de cet élément
+    revealObserver.observe(element)
+})
