@@ -2407,3 +2407,57 @@ body.menu-open {
         width: 180px;
     }
 }
+
+/* Responsive : très petits écrans */
+@media screen and (max-width: 450px) {
+    .nav__link::before {
+        font-size: 2.8rem;
+    }
+
+    .home__title,
+    .home__typing {
+        font-size: 3.4rem;
+    }
+
+    .home__btns {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 12.5rem;
+    }
+
+    .about__data {
+        grid-template-columns: 1fr;
+    }
+
+    .about__bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .about__bottom {
+        row-gap: 1.25rem;
+    }
+
+    .about__bottom .btn {
+        order: 1;
+    }
+
+    .skills__titles,
+    .skills__description {
+        padding-inline: 1rem;
+    }
+
+    .services__item {
+        padding: 2rem 1.5rem;
+    }
+
+    .skills__tech-zone,
+    .skills__insights {
+        padding: 1.1rem;
+    }
+
+    .skills__filter {
+        padding: .65rem .95rem;
+    }
+}
