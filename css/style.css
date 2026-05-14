@@ -718,3 +718,126 @@ input[name="color"],
     background-color: var(--first-color);
     color: var(--white);
 }
+
+/*---------------------------------- ABOUT ----------------------------------*/
+
+/* Conteneur principal de la section About */
+.about__container {
+    grid-template-columns: 4fr 8fr;
+    align-items: center;
+}
+
+/* Conteneur des images découpées */
+.about__img-wrapper {
+    position: relative;
+    height: 400px;
+}
+
+/* Style général des images */
+.about__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all .3s ease;
+}
+
+/* Premier morceau de l’image */
+.about__img:nth-child(1) {
+    clip-path: polygon(0 0, 0 32%, 28% 0);
+    transform: translateY(-1.25rem);
+}
+
+/* Deuxième morceau de l’image */
+.about__img:nth-child(2) {
+    clip-path: polygon(28% 0, 0 32%, 0 100%, 17% 100%, 90% 0);
+    transform: translateY(-0.75rem);
+}
+
+/* Troisième morceau de l’image */
+.about__img:nth-child(3) {
+    clip-path: polygon(100% 0, 100% 65%, 74% 100%, 17% 100%, 90% 0);
+    transform: translateY(-0.25rem);
+}
+
+/* Quatrième morceau de l’image */
+.about__img:nth-child(4) {
+    clip-path: polygon(100% 65%, 74% 100%, 100% 100%);
+    transform: translateY(0.25rem);
+}
+
+/* Animation au survol des images */
+.about__img-wrapper:hover .about__img {
+    /* Remet les 4 morceaux au même niveau sans déplacer l'image vers la gauche */
+    transform: translateY(0);
+}
+
+/* Description de la section About */
+.about__description {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: justify;
+}
+
+/* Conteneur des informations personnelles */
+.about__data {
+    grid-template-columns: repeat(2, 1fr);
+    gap: .25rem;
+    margin-bottom: 3rem;
+}
+
+/* Élément individuel des données */
+.data__item {
+    display: flex;
+    column-gap: .75rem;
+}
+
+/* Titre des données */
+.data__title {
+    font-size: var(--large-font-size);
+}
+
+/* Style des liens dans la section About */
+.about__link {
+    color: hsl(225, 73%, 57%);
+    cursor: pointer;
+}
+
+/* Alignement de la partie basse et des réseaux sociaux */
+.about__bottom,
+.about__social-links {
+    display: flex;
+    align-items: center;
+}
+
+/* Conteneur du bas de la section */
+.about__bottom {
+    column-gap: 3rem;
+}
+
+/* Liste des liens sociaux */
+.about__social-links {
+    column-gap: 1.25rem;
+}
+
+/* Ligne décorative avant les réseaux sociaux */
+.about__social-links::before {
+    content: '';
+    background-color: var(--text-color);
+    width: 70px;
+    height: 5px;
+}
+
+/* Style des icônes/liens sociaux */
+.about__social-link {
+    color: var(--text-color);
+    transition: all .3s ease;
+}
+
+/* Effet hover sur les liens sociaux */
+.about__social-link:hover {
+    color: var(--first-color);
+}
