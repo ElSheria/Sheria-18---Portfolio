@@ -212,3 +212,26 @@ document.addEventListener('scroll', () => {
     // On met à jour le lien actif selon la section visible
     activateLinkOnScroll()
 })
+
+// THEME SWITCHER
+
+// On récupère tous les labels dans le panneau des thèmes
+const themeLabels = document.querySelectorAll('.style__switcher label')
+
+// Pour chaque label de thème
+themeLabels.forEach((label) => {
+    // Quand on clique sur un label
+    label.addEventListener('click', () => {
+        // On garde la position horizontale actuelle
+        const currentX = window.scrollX
+
+        // On garde la position verticale actuelle
+        const currentY = window.scrollY
+
+        // Après le clic, on remet la page exactement à la même position
+        setTimeout(() => {
+            // On empêche la page de remonter au début
+            window.scrollTo(currentX, currentY)
+        }, 0)
+    })
+})
