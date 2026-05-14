@@ -1225,3 +1225,191 @@ input[name="color"],
     line-height: 1.65;
     text-align: justify;
 }
+
+/*---------------------------------- PROJECTS ----------------------------------*/
+
+/* Conteneur principal des projets */
+.work__container {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Carte individuelle d’un projet */
+.work__card {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: .5rem;
+    box-shadow: 0 0 0 hsla(0, 0%, 0%, 0);
+    transition: transform .35s ease, box-shadow .35s ease;
+}
+
+/* Image du projet */
+.work__img {
+    height: 25rem;
+    width: 100%;
+    object-fit: cover;
+    vertical-align: middle;
+    transition: transform .5s ease, filter .5s ease;
+}
+
+/* Overlay affiché au hover */
+.work__details {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            180deg,
+            hsla(0, 0%, 0%, .14),
+            hsla(0, 0%, 0%, .84)
+        );
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    opacity: 0;
+    padding: 1.6rem;
+    transition: all .4s ease-in-out;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+/* Bordures arrondies des images et détails */
+.work__img,
+.work__details {
+    border-radius: .5rem;
+}
+
+/* Catégorie du projet */
+.work__category {
+    color: var(--first-color-light);
+    font-size: var(--h3-font-size);
+    font-weight: var(--weight-600);
+    text-transform: uppercase;
+    letter-spacing: .06rem;
+    margin-bottom: .45rem;
+    transform: translateY(1.5rem);
+    opacity: 0;
+    transition: all .3s ease-in-out;
+}
+
+/* Titre du projet */
+.work__title {
+    color: var(--white);
+    font-size: var(--h3-font-size);
+    margin-bottom: .65rem;
+    transform: translateY(1.5rem);
+    transition: all .3s ease-in-out;
+}
+
+/* Description du projet */
+.work__description {
+    color: var(--white);
+    font-size: 1rem;
+    line-height: 1.55;
+    text-align: justify;
+    margin-bottom: 1rem;
+    transform: translateY(1.5rem);
+    opacity: 0;
+    transition: all .3s ease-in-out;
+}
+
+/* Conteneur des tags */
+.work__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .45rem;
+    margin-bottom: 1rem;
+    transform: translateY(1.5rem);
+    opacity: 0;
+    transition: all .3s ease-in-out;
+}
+
+/* Style individuel des tags */
+.work__tags span {
+    color: var(--white);
+    background-color: var(--first-color);
+    border: 1px solid var(--first-color);
+    padding: .25rem .65rem;
+    border-radius: 999px;
+    font-size: .78rem;
+    font-weight: var(--weight-600);
+    line-height: 1;
+}
+
+/* Conteneur des boutons d’action */
+.work__actions {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: .6rem;
+    width: 100%;
+    transform: translateY(1.5rem);
+    opacity: 0;
+    transition: all .3s ease-in-out;
+}
+
+/* Bouton principal */
+.work__btn {
+    min-height: 2.7rem;
+    padding-inline: 1rem;
+    border-radius: .35rem;
+    background-color: var(--first-color);
+    border: 1px solid var(--first-color);
+    color: var(--white);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: .55rem;
+    font-size: .95rem;
+    font-weight: var(--weight-600);
+    transition: all .3s ease;
+}
+
+/* Bouton secondaire sombre */
+.work__btn--dark {
+    width: 3.2rem;
+    background-color: hsl(0, 0%, 2%);
+    border-color: hsl(0, 0%, 2%);
+    font-size: 1.1rem;
+}
+
+/* Effet hover du bouton principal */
+.work__btn:hover {
+    background-color: var(--first-color-dark);
+    border-color: var(--first-color-dark);
+    transform: translateY(-2px);
+}
+
+/* Effet hover du bouton sombre */
+.work__btn--dark:hover {
+    background-color: var(--first-color);
+    border-color: var(--first-color);
+}
+
+/* Animation hover sur la carte projet */
+.work__card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 42px hsla(0, 0%, 0%, .25);
+}
+
+/* Zoom et assombrissement de l’image */
+.work__card:hover .work__img {
+    transform: scale(1.08);
+    filter: brightness(.62);
+}
+
+/* Affiche l’overlay au hover */
+.work__card:hover .work__details {
+    opacity: 1;
+}
+
+/* Animation des éléments internes au hover */
+.work__card:hover :is(
+    .work__category,
+    .work__title,
+    .work__description,
+    .work__tags,
+    .work__actions
+) {
+    opacity: 1;
+    transform: translateY(0);
+}
