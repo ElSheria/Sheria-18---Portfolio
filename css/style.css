@@ -1883,3 +1883,80 @@ body.menu-open {
 .header.scrolled {
     box-shadow: 0 10px 30px hsla(0, 0%, 0%, .22);
 }
+
+/*---------------------------------- RESPONSIVES ----------------------------------*/
+/* Les media queries sont rangées ici du plus grand écran au plus petit. */
+
+/* Responsive : grands écrans */
+@media screen and (max-width: 1200px) {
+    .container {
+        max-width: 960px;
+    }
+
+    :root {
+        --big-font-size: 2.5rem;
+        --h1-font-size: 2rem;
+        --h2-font-size: 1.75rem;
+        --h3-font-size: 1.25rem;
+        --larger-font-size: 1rem;
+        --large-font-size: .938rem;
+    }
+
+    .home__title,
+    .home__typing {
+        font-size: 4.5rem;
+    }
+
+    .home__typing {
+        font-size: 2rem;
+        line-height: 1.25;
+    }
+
+    .home__typing-text {
+        font-size: 2rem;
+    }
+
+    .home__typing-cursor {
+        font-size: 2rem;
+    }
+
+    .home__img-wrapper {
+        width: 340px;
+        height: 340px;
+    }
+
+    .about__img-wrapper {
+        height: 320px;
+    }
+
+    .services__icon {
+        font-size: 1.5rem;
+    }
+
+    .services__num {
+        font-size: 2.5rem;
+    }
+
+    .services__title {
+        margin-block: 1.25rem .75rem;
+    }
+
+    .style__switcher-colors .color {
+        width: 24px;
+        height: 24px;
+    }
+
+    .style__switcher-toggler,
+    .style__switcher-theme {
+        width: 40px;
+        height: 40px;
+    }
+
+    .style__switcher-toggler {
+        top: 10%;
+    }
+
+    .style__switcher-theme {
+        bottom: 10%;
+    }
+}
