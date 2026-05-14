@@ -1591,3 +1591,295 @@ input[name="color"],
 .footer__social-link:hover {
     color: var(--first-color);
 }
+
+/*---------------------------------- BEAUTIFUL EFFECTS ----------------------------------*/
+
+/* Transitions globales plus douces */
+.header,
+.nav__list,
+.nav__link,
+.nav__logo,
+.btn,
+.services__item,
+.work__card,
+.work__img,
+.work__details,
+.testimonials__item,
+.input__control,
+.about__social-link,
+.footer__social-link {
+    will-change: transform;
+}
+
+/* Effet léger de profondeur sur le header */
+.header {
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+/* Logo : petit effet premium au survol */
+.nav__logo {
+    transition: transform .3s ease, text-shadow .3s ease;
+}
+
+.nav__logo:hover {
+    transform: scale(1.04);
+    text-shadow: 0 0 18px hsla(268, 77%, 58%, .45);
+}
+
+/* Navigation : soulignement animé */
+.nav__link {
+    position: relative;
+}
+
+.nav__link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.45rem;
+    width: 0;
+    height: 2px;
+    background-color: var(--first-color);
+    border-radius: 999px;
+    transition: width .3s ease;
+}
+
+.nav__link:hover::after,
+.nav__link.active-link::after {
+    width: 100%;
+}
+
+/* Image principale : mouvement flottant */
+.home__img-wrapper {
+    animation: floatImage 4s ease-in-out infinite;
+}
+
+@keyframes floatImage {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-14px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Boutons : effet lumière + profondeur */
+.btn {
+    position: relative;
+    overflow: hidden;
+    transform: translateY(0);
+    box-shadow: 0 0 0 hsla(268, 77%, 58%, 0);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, .35),
+        transparent
+    );
+    transition: left .6s ease;
+}
+
+.btn:hover::before {
+    left: 120%;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px hsla(268, 77%, 58%, .25);
+}
+
+/* Titres de sections : ligne décorative */
+.section__title {
+    position: relative;
+}
+
+.title-center::after {
+    content: '';
+    display: block;
+    width: 70px;
+    height: 3px;
+    background-color: var(--first-color);
+    margin: 1rem auto 0;
+    border-radius: 999px;
+}
+
+/* Image About : ombre élégante */
+.about__img-wrapper {
+    filter: drop-shadow(0 18px 30px hsla(0, 0%, 0%, .3));
+}
+
+/* Cartes services : glow doux + montée */
+.services__item {
+    overflow: hidden;
+    box-shadow: 0 0 0 hsla(0, 0%, 0%, 0);
+}
+
+.services__item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at top right,
+        hsla(268, 77%, 58%, .18),
+        transparent 42%
+    );
+    opacity: 0;
+    transition: opacity .4s ease;
+}
+
+.services__item:hover::before {
+    opacity: 1;
+}
+
+.services__item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 18px 40px hsla(0, 0%, 0%, .25);
+}
+
+.services__item > :not(.services__num) {
+    position: relative;
+    z-index: 2;
+}
+
+.services__num {
+    position: absolute;
+    right: 2.5rem;
+    top: 1rem;
+    color: var(--title-color);
+    font-size: 3.75rem;
+    opacity: 0.07;
+    z-index: 1;
+}
+
+/* Portfolio : styles enrichis déjà gérés dans le bloc PORTFOLIO principal */
+
+/* Barres de compétences : petite animation visuelle sans JavaScript */
+.skills__percentage {
+    transform-origin: left;
+    animation: fillSkill 1.2s ease both;
+}
+
+@keyframes fillSkill {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+/* Témoignages : effet carte premium */
+.testimonials__item {
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: .75rem;
+    background: linear-gradient(
+        145deg,
+        var(--container-color),
+        hsla(268, 77%, 58%, .04)
+    );
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+
+.testimonials__item:hover {
+    transform: translateY(-8px);
+    border-color: var(--first-color);
+    box-shadow: 0 18px 40px hsla(0, 0%, 0%, .2);
+}
+
+/* Réseaux sociaux : effet hover dynamique */
+.about__social-link,
+.footer__social-link {
+    display: inline-flex;
+    transition: transform .3s ease, color .3s ease;
+}
+
+.about__social-link:hover,
+.footer__social-link:hover {
+    transform: translateY(-5px) scale(1.12);
+}
+
+/* Contact : champs plus professionnels */
+.input__control {
+    border: 1px solid transparent;
+    transition: border-color .3s ease, box-shadow .3s ease, transform .3s ease;
+}
+
+.input__control:focus {
+    border-color: var(--first-color);
+    box-shadow: 0 0 0 4px hsla(268, 77%, 58%, .12);
+    transform: translateY(-2px);
+}
+
+/* Style switcher : effet glass */
+.style__switcher {
+    box-shadow: 0 18px 45px hsla(0, 0%, 0%, .25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* Apparition au scroll : prêt pour ton fichier js/main.js */
+.reveal {
+    opacity: 0;
+    transform: translateY(45px);
+    transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/*---------------------------------- FINAL FIXES ----------------------------------*/
+/* Garde les numéros 01, 02, 03... en haut à droite des cartes services */
+.services__item > :not(.services__num) {
+    position: relative;
+    z-index: 2;
+}
+
+.services__num {
+    position: absolute;
+    right: 2.5rem;
+    top: 1rem;
+    color: var(--title-color);
+    font-size: 3.75rem;
+    opacity: 0.07;
+    z-index: 1;
+}
+
+/* Garde l'effet de soulèvement des témoignages même avec l'animation reveal */
+.testimonials__item.reveal.show:hover {
+    transform: translateY(-8px);
+    border-color: var(--first-color);
+    box-shadow: 0 18px 40px hsla(0, 0%, 0%, .25);
+}
+
+/* Permet aux témoignages d'avoir une transition douce après l'apparition au scroll */
+.testimonials__item.reveal.show {
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+
+
+/*---------------------------------- HAMBURGER JS MODE ----------------------------------*/
+body.menu-open {
+    overflow: hidden;
+}
+
+.header.scrolled {
+    box-shadow: 0 10px 30px hsla(0, 0%, 0%, .22);
+}
