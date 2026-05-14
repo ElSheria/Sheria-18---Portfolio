@@ -354,3 +354,93 @@ if (typingText) {
         typeWriterEffect()
     }
 }
+
+// STUDIO DE COMPÉTENCES
+
+// On récupère tous les boutons de filtre de la section compétences
+const studioFilterButtons = document.querySelectorAll('[data-studio-filter]')
+
+// On récupère toutes les cartes de technologies de la section compétences
+const studioSkillCards = document.querySelectorAll('[data-studio-card]')
+
+// On récupère tous les panneaux de description de la section compétences
+const studioSkillPanels = document.querySelectorAll('[data-studio-panel]')
+
+// On récupère le compteur qui affiche le nombre de cartes visibles
+const studioVisibleCount = document.querySelector('#skills-visible-count')
+
+// Fonction qui filtre les technologies et les descriptions selon la catégorie choisie
+function filterStudioSkills(selectedFilter) {
+    // Variable qui va compter les cartes visibles après le filtre
+    let visibleCount = 0
+
+    // On parcourt chaque carte de technologie
+    studioSkillCards.forEach((card) => {
+        // On récupère les catégories inscrites dans l'attribut data-studio-category
+        const cardCategories = card.dataset.studioCategory || ''
+
+        // On transforme les catégories en tableau pour pouvoir faire une comparaison propre
+        const categoryList = cardCategories.split(' ')
+
+        // On vérifie si on doit afficher la carte ou non
+        const shouldShowCard = selectedFilter === 'all' || categoryList.includes(selectedFilter)
+
+        // On cache la carte si elle ne correspond pas au filtre
+        card.classList.toggle('is-hidden', !shouldShowCard)
+
+        // Si la carte est visible, on augmente le compteur
+        if (shouldShowCard) {
+            visibleCount += 1
+        }
+    })
+
+    // On parcourt chaque panneau descriptif
+    studioSkillPanels.forEach((panel) => {
+        // On récupère la catégorie du panneau
+        const panelCategory = panel.dataset.studioPanel
+
+        // En mode "Toutes", on affiche tous les panneaux ; sinon on affiche seulement le bon panneau
+        const shouldShowPanel = selectedFilter === 'all' || panelCategory === selectedFilter
+
+        // On cache ou affiche le panneau selon le filtre
+        panel.classList.toggle('is-hidden', !shouldShowPanel)
+    })
+
+    // Si le compteur existe, on affiche le nombre de cartes visibles
+    if (studioVisibleCount) {
+        studioVisibleCount.textContent = visibleCount
+    }
+}
+
+// On vérifie que la section compétences existe avant d'ajouter les événements
+if (studioFilterButtons.length && studioSkillCards.length && studioSkillPanels.length) {
+    // On parcourt chaque bouton de filtre
+    studioFilterButtons.forEach((button) => {
+        // Quand on clique sur un bouton
+        button.addEventListener('click', () => {
+            // On récupère la catégorie demandée par ce bouton
+            const selectedFilter = button.dataset.studioFilter || 'all'
+
+            // On retire l'état actif de tous les boutons
+            studioFilterButtons.forEach((filterButton) => {
+                // On retire la classe active
+                filterButton.classList.remove('active')
+
+                // On indique que le bouton n'est pas sélectionné pour l'accessibilité
+                filterButton.setAttribute('aria-pressed', 'false')
+            })
+
+            // On ajoute l'état actif sur le bouton cliqué
+            button.classList.add('active')
+
+            // On indique que ce bouton est sélectionné pour l'accessibilité
+            button.setAttribute('aria-pressed', 'true')
+
+            // On applique le filtre choisi
+            filterStudioSkills(selectedFilter)
+        })
+    })
+
+    // Au chargement, on affiche toutes les compétences
+    filterStudioSkills('all')
+}
