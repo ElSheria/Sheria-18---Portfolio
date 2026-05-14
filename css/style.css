@@ -2558,3 +2558,18 @@ body.menu-open {
         font-size: 1.3rem;
     }
 }
+
+/* Accessibilité : réduction des animations */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+
+    .home__typing-cursor {
+        opacity: 1;
+    }
+}
