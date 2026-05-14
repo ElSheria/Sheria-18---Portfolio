@@ -352,3 +352,157 @@ input[name="color"],
     --first-color-dark: hsl(42, 85%, 50%);
     --first-color-light: hsl(42, 100%, 83%);
 }
+
+/*---------------------------------- HEADER & NAV ----------------------------------*/
+
+/* Barre de navigation principale fixée en haut */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--nav-color);
+    box-shadow: 0 3px 9px hsla(0, 0%, 0%, 0.05);
+    z-index: 100;
+}
+
+/* Structure flex pour la navbar et la liste des liens */
+.nav,
+.nav__list {
+    display: flex;
+}
+
+/* Conteneur principal de navigation */
+.nav {
+    height: calc(var(--header-height) + 2.25rem);
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Style du logo */
+.nav__logo {
+    color: var(--first-color);
+    font-size: var(--h2-font-size);
+    font-weight: var(--weight-600);
+}
+
+/* Alignement du logo et de son image */
+.nav__logo {
+    display: inline-flex;
+    align-items: center;
+    column-gap: .6rem;
+}
+
+/* Image du logo */
+.nav__logo img {
+    width: 34px;
+    height: 34px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Espacement entre les liens du menu */
+.nav__list {
+    column-gap: 1.5rem;
+}
+
+/* Style des liens de navigation */
+.nav__link {
+    color: var(--title-color);
+    transition: all .3s ease;
+}
+
+/* Bouton hamburger pour le menu mobile */
+.nav__toggle {
+    display: none;
+    height: 52px;
+    width: 52px;
+    border: 2px solid var(--title-color);
+    border-radius: 50%;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transform: scale(.85);
+    z-index: 1200;
+}
+
+/* Cercle animé autour du bouton hamburger */
+.nav__toggle::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border: 2px solid var(--title-color);
+    border-radius: 50%;
+    animation: hamburgerPulse 1s ease infinite;
+}
+
+/* Barre centrale du hamburger */
+.nav__bar {
+    height: 2px;
+    width: 28px;
+    position: relative;
+    background-color: var(--title-color);
+    z-index: 2;
+    transition: background-color .3s ease;
+}
+
+/* Barres du haut et du bas du hamburger */
+.nav__bar::before,
+.nav__bar::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    background-color: var(--title-color);
+    transition: bottom .3s ease, top .3s ease, transform .3s ease;
+}
+
+/* Position de la barre supérieure */
+.nav__bar::before {
+    bottom: 8px;
+}
+
+/* Position de la barre inférieure */
+.nav__bar::after {
+    top: 8px;
+}
+
+/* Style du hamburger quand le menu est actif */
+.nav__toggle.active .nav__bar {
+    background-color: var(--title-color);
+}
+
+/* Animation de la barre supérieure quand actif */
+.nav__toggle.active .nav__bar::before {
+    bottom: 0;
+    transform: none;
+}
+
+/* Animation de la barre inférieure quand actif */
+.nav__toggle.active .nav__bar::after {
+    top: 0;
+    transform: none;
+}
+
+/* Animation de pulsation du bouton hamburger */
+@keyframes hamburgerPulse {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.35);
+    }
+}
+
+/*---------------------------------- ACTIVE LINK ----------------------------------*/
+
+/* Style du lien actif et effet hover */
+.active-link,
+.nav__link:hover {
+    color: var(--first-color);
+}
