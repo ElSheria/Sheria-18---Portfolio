@@ -1553,3 +1553,41 @@ input[name="color"],
     float: left;
     cursor: pointer;
 }
+
+/*---------------------------------- FOOTER ----------------------------------*/
+
+/* Section principale du footer */
+.footer {
+    background-color: var(--container-color);
+    padding-block: 3rem;
+}
+
+/* Conteneur du footer */
+.footer__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Texte du copyright */
+.footer__copyright {
+    color: var(--text-color);
+}
+
+/* Conteneur des liens sociaux */
+.footer__social-links {
+    display: flex;
+    column-gap: 2rem;
+}
+
+/* Style des icônes/liens sociaux */
+.footer__social-link {
+    color: var(--text-color);
+    font-size: var(--large-font-size);
+    transition: all .5s ease-in-out;
+}
+
+/* Effet hover sur les liens sociaux */
+.footer__social-link:hover {
+    color: var(--first-color);
+}
