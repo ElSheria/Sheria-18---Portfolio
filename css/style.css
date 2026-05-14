@@ -147,3 +147,208 @@ input[name="color"],
     text-align: center;
     margin-bottom: 3rem;
 }
+
+/*---------------------------------- STYLE SWITCHER ----------------------------------*/
+
+/* Conteneur principal du switcher de thème/couleurs */
+.style__switcher {
+    position: fixed;
+    right: 0;
+    bottom: 20%;
+    padding: 1rem;
+    width: 220px;
+    border: 1px solid var(--border-color);
+    background-color: var(--container-color);
+    border-radius: 0.5rem;
+    z-index: 1000;
+    transform: translateX(100%);
+    transition: all .3s ease;
+}
+
+/* Affiche le switcher quand le checkbox #toggler est coché */
+#toggler:checked ~ .style__switcher {
+    transform: translateX(0);
+}
+
+/* Style commun des boutons du switcher */
+.style__switcher-toggler,
+.style__switcher-theme {
+    position: absolute;
+    right: 110%;
+    color: var(--title-color);
+    background-color: var(--body-color);
+    border: 1px solid var(--border-color);
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: all .3s ease;
+}
+
+/* Position du bouton qui ouvre/ferme le switcher */
+.style__switcher-toggler {
+    top: 7%;
+}
+
+/* Position du bouton du thème clair/sombre */
+.style__switcher-theme {
+    bottom: 7%;
+}
+
+/* Cache l’icône lune par défaut */
+.style__switcher-theme .bi-moon-fill {
+    display: none;
+}
+
+/* Cache l’icône soleil quand le mode nuit est activé */
+#day-night:checked ~ * .bi-sun {
+    display: none;
+}
+
+/* Affiche l’icône lune quand le mode nuit est activé */
+#day-night:checked ~ * .bi-moon-fill {
+    display: block;
+}
+
+/* Titre du panneau de personnalisation */
+.style__switcher-title {
+    font-size: var(--large-font-size);
+    margin-bottom: 0.75rem;
+}
+
+/* Grille contenant toutes les couleurs */
+.style__switcher-colors {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: .5rem;
+}
+
+/* Style de chaque cercle de couleur */
+.style__switcher-colors .color {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Couleur numéro 1 */
+.color-1 {
+    background-color: hsl(225, 35%, 51%);
+}
+
+/* Couleur numéro 2 */
+.color-2 {
+    background-color: hsl(351, 85%, 51%);
+}
+
+/* Couleur numéro 3 */
+.color-3 {
+    background-color: hsl(271, 76%, 53%);
+}
+
+/* Couleur numéro 4 */
+.color-4 {
+    background-color: hsl(225, 73%, 57%);
+}
+
+/* Couleur numéro 5 */
+.color-5 {
+    background-color: hsl(43, 74%, 49%);
+}
+
+/* Couleur numéro 6 */
+.color-6 {
+    background-color: hsl(339, 81%, 66%);
+}
+
+/* Couleur numéro 7 */
+.color-7 {
+    background-color: hsl(80, 61%, 50%);
+}
+
+/* Couleur numéro 8 */
+.color-8 {
+    background-color: hsl(19, 96%, 52%);
+}
+
+/* Couleur numéro 9 */
+.color-9 {
+    background-color: hsl(88, 65%, 43%);
+}
+
+/* Couleur numéro 10 */
+.color-10 {
+    background-color: hsl(42, 100%, 50%);
+}
+
+/* Variables CSS appliquées quand la couleur 1 est sélectionnée */
+#color-1:checked ~ * {
+    --first-color: hsl(252, 35%, 51%);
+    --first-color-dark: hsl(252, 25%, 51%);
+    --first-color-light: hsl(252, 100%, 83%);
+}
+
+/* Variables CSS appliquées quand la couleur 2 est sélectionnée */
+#color-2:checked ~ * {
+    --first-color: hsl(351, 85%, 51%);
+    --first-color-dark: hsl(351, 75%, 51%);
+    --first-color-light: hsl(351, 100%, 83%);
+}
+
+/* Variables CSS appliquées quand la couleur 3 est sélectionnée */
+#color-3:checked ~ * {
+    --first-color: hsl(271, 76%, 53%);
+    --first-color-dark: hsl(271, 60%, 53%);
+    --first-color-light: hsl(271, 100%, 83%);
+}
+
+/* Variables CSS appliquées quand la couleur 4 est sélectionnée */
+#color-4:checked ~ * {
+    --first-color: hsl(225, 73%, 57%);
+    --first-color-dark: hsl(225, 63%, 57%);
+    --first-color-light: hsl(225, 100%, 83%);
+}
+
+/* Variables CSS appliquées quand la couleur 5 est sélectionnée */
+#color-5:checked ~ * {
+    --first-color: hsl(43, 74%, 49%);
+    --first-color-dark: hsl(43, 64%, 49%);
+    --first-color-light: hsl(43, 100%, 83%);
+}
+
+/* Variables CSS appliquées quand la couleur 6 est sélectionnée */
+#color-6:checked ~ * {
+    --first-color: hsl(339, 81%, 66%);
+    --first-color-dark: hsl(339, 71%, 66%);
+    --first-color-light: hsl(339, 100%, 83%);
+}
+
+/* Variables CSS appliquées quand la couleur 7 est sélectionnée */
+#color-7:checked ~ * {
+    --first-color: hsl(80, 61%, 50%);
+    --first-color-dark: hsl(80, 51%, 50%);
+    --first-color-light: hsl(80, 100%, 83%);
+}
+
+/* Variables CSS appliquées quand la couleur 8 est sélectionnée */
+#color-8:checked ~ * {
+    --first-color: hsl(19, 96%, 52%);
+    --first-color-dark: hsl(19, 86%, 52%);
+    --first-color-light: hsl(19, 100%, 83%);
+}
+
+/* Variables CSS appliquées quand la couleur 9 est sélectionnée */
+#color-9:checked ~ * {
+    --first-color: hsl(88, 65%, 43%);
+    --first-color-dark: hsl(88, 55%, 43%);
+    --first-color-light: hsl(88, 100%, 83%);
+}
+
+/* Variables CSS appliquées quand la couleur 10 est sélectionnée */
+#color-10:checked ~ * {
+    --first-color: hsl(42, 100%, 50%);
+    --first-color-dark: hsl(42, 85%, 50%);
+    --first-color-light: hsl(42, 100%, 83%);
+}
