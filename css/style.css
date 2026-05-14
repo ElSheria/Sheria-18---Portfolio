@@ -506,3 +506,215 @@ input[name="color"],
 .nav__link:hover {
     color: var(--first-color);
 }
+
+/*---------------------------------- HOME ----------------------------------*/
+
+/* Section principale Home */
+.home {
+    background-color: var(--container-color);
+    padding-block: 9rem 3rem;
+    overflow: hidden;
+}
+
+/* Conteneur principal de la section Home */
+.home__container {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+}
+
+/* Petit texte d’introduction */
+.home__small {
+    font-size: var(--big-font-size);
+    font-weight: var(--weight-600);
+    letter-spacing: 1px;
+}
+
+/* Grand titre principal */
+.home__title {
+    font-size: 5rem;
+    line-height: 1.25;
+    margin-bottom: -1rem;
+}
+
+/* Garde le texte "Je m'appelle" avec la couleur normale du titre */
+.home__intro {
+    display: inline-block; /* Permet de garder le texte propre sur sa ligne */
+    color: var(--title-color);
+    font-weight: var(--weight-300);
+}
+
+/* Met "Elie Hangi" dans la couleur principale qui change avec les thèmes */
+.home__name {
+    display: inline-block;
+    color: var(--first-color);
+    font-weight: var(--weight-600);
+    font-family: 'trebuchet MS';
+    transition: color .3s ease; /* Rend le changement de thème plus doux */
+}
+
+/* Bloc séparé pour "Je suis + texte animé" */
+.home__typing {
+    color: var(--title-color);
+    font-weight: var(--weight-300);
+    line-height: 1.25;
+    margin-block: 1rem 0;
+}
+
+/* Garde "Je suis" sur sa propre ligne */
+.home__typing-label {
+    display: block;
+    font-size: 3rem;
+    color: var(--title-color);
+    font-weight: var(--weight-300);
+}
+
+/* Texte animé tapé par JavaScript */
+.home__typing-text {
+    display: inline;
+    color: var(--first-color);
+    font-size: 2.6rem;
+    font-family: MV Boli;
+    font-weight: var(--weight-600);
+    white-space: normal; /* Autorise le retour à la ligne sur petits écrans */
+    overflow-wrap: break-word; /* Évite que les longs textes dépassent sur mobile */
+    transition: color .3s ease;
+}
+
+/* Curseur de l’effet machine à écrire */
+.home__typing-cursor {
+    display: inline-block; /* Permet d'animer le curseur sans décaler le texte */
+    color: var(--first-color);
+    font-weight: var(--weight-600);
+    font-size: 2.5rem;
+    margin-left: .15rem;
+    animation: typingCursorBlink .8s ease-in-out infinite; /* Fait clignoter le curseur */
+    transition: color .3s ease;
+}
+
+/* Animation du curseur */
+@keyframes typingCursorBlink {
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Description sous le titre */
+.home__description {
+    margin-block: 1.5rem 3rem;
+    text-align: justify;
+}
+
+/* Conteneur des boutons */
+.home__btns {
+    display: flex;
+    column-gap: 1rem;
+}
+
+/* Conteneur de l’image de profil */
+.home__img-wrapper {
+    width: 25rem;
+    height: 25rem;
+    margin-inline: auto 2rem;
+    position: relative;
+}
+
+/* Pseudo-éléments décoratifs derrière l’image */
+.home__img-wrapper::before,
+.home__img-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+}
+
+/* Forme animée claire derrière l’image */
+.home__img-wrapper::before {
+    background-color: var(--first-color-light);
+    animation: animate__before 8s ease-in-out infinite;
+}
+
+/* Forme animée principale derrière l’image */
+.home__img-wrapper::after {
+    background-color: var(--first-color);
+}
+
+/* Animation appliquée à la forme et à l’image */
+.home__img-wrapper::after,
+.home__img {
+    animation: animate__after 8s ease-in-out infinite;
+}
+
+/* Image principale */
+.home__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 10;
+    position: relative;
+    vertical-align: middle;
+}
+
+/* Animation de la première forme organique */
+@keyframes animate__before {
+    0% {
+        border-radius: 65% 35% 29% 71% / 55% 30% 70% 45%;
+    }
+
+    50% {
+        border-radius: 21% 79% 50% 50% / 21% 50% 50% 79%;
+    }
+
+    100% {
+        border-radius: 65% 35% 29% 71% / 55% 30% 70% 45%;
+    }
+}
+
+/* Animation de la deuxième forme organique */
+@keyframes animate__after {
+    0% {
+        border-radius: 21% 79% 50% 50% / 21% 50% 50% 79%;
+    }
+
+    50% {
+        border-radius: 65% 35% 29% 71% / 55% 30% 70% 45%;
+    }
+
+    100% {
+        border-radius: 21% 79% 50% 50% / 21% 50% 50% 79%;
+    }
+}
+
+/*---------------------------------- BUTTON ----------------------------------*/
+
+/* Style général des boutons */
+.btn {
+    display: inline-block;
+    background-color: var(--first-color);
+    border: 1px solid var(--first-color);
+    color: var(--white);
+    padding: 0.9rem 2.5rem;
+    font-size: var(--large-font-size);
+    border-radius: 0.5rem;
+    transition: all 0.5s ease;
+}
+
+/* Variante bouton transparent */
+.btn--transparent {
+    background-color: transparent;
+    color: var(--first-color);
+}
+
+/* Effet hover du bouton principal */
+.btn:hover {
+    background-color: var(--first-color-dark);
+}
+
+/* Effet hover du bouton transparent */
+.btn--transparent:hover {
+    background-color: var(--first-color);
+    color: var(--white);
+}
