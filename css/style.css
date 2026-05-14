@@ -891,3 +891,337 @@ input[name="color"],
     font-size: 3.75rem;
     opacity: 0.07;
 }
+
+/*---------------------------------- SKILLS ----------------------------------*/
+
+/* Section principale Skills avec fond décoratif */
+.skills {
+    background:
+        radial-gradient(circle at 15% 20%, hsla(268, 77%, 58%, .12), transparent 32%),
+        radial-gradient(circle at 85% 80%, hsla(268, 100%, 83%, .08), transparent 30%),
+        var(--container-color);
+}
+
+/* En-tête de la section Skills */
+.skills__head {
+    text-align: center;
+}
+
+/* Texte d’introduction de la section */
+.skills__lead {
+    max-width: 760px;
+    margin: -1.5rem auto 2.5rem;
+    color: var(--text-color);
+    line-height: 1.75;
+}
+
+/* Conteneur des filtres */
+.skills__filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: .85rem;
+    margin-bottom: 3rem;
+}
+
+/* Bouton de filtre */
+.skills__filter {
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    color: var(--title-color);
+    background-color: var(--body-color);
+    border: 1px solid var(--border-color);
+    padding: .75rem 1.1rem;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 10px 24px hsla(0, 0%, 0%, .14);
+    transition: transform .3s ease, color .3s ease, border-color .3s ease, background-color .3s ease, box-shadow .3s ease;
+}
+
+/* Icône à l’intérieur d’un filtre */
+.skills__filter i {
+    color: var(--first-color);
+    font-size: .95rem;
+    transition: color .3s ease;
+}
+
+/* Effet hover et état actif des filtres */
+.skills__filter:hover,
+.skills__filter.active {
+    color: var(--white);
+    background-color: var(--first-color);
+    border-color: var(--first-color);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 35px hsla(268, 77%, 58%, .24);
+}
+
+/* Changement de couleur des icônes au hover/active */
+.skills__filter:hover i,
+.skills__filter.active i {
+    color: var(--white);
+}
+
+/* Conteneur principal de la section Skills */
+.skills__container {
+    grid-template-columns: 1.08fr .92fr;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+/* Bloc des technologies et bloc des insights */
+.skills__tech-zone,
+.skills__insights {
+    border: 1px solid var(--border-color);
+    background:
+        linear-gradient(145deg, hsla(0, 0%, 100%, .025), transparent),
+        var(--body-color);
+    border-radius: 1rem;
+    padding: 1.6rem;
+    box-shadow: 0 18px 45px hsla(0, 0%, 0%, .22);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Permet aux éléments flottants de dépasser */
+.skills__tech-zone {
+    overflow: visible;
+}
+
+/* Effet lumineux décoratif */
+.skills__tech-zone::before,
+.skills__insights::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, hsla(268, 77%, 58%, .15), transparent 36%);
+    opacity: .8;
+    pointer-events: none;
+}
+
+/* En-têtes des différentes zones */
+.skills__zone-header,
+.skills__insights-header {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.4rem;
+}
+
+/* Petit texte d’introduction des panels */
+.skills__zone-kicker,
+.skills__panel-kicker {
+    display: inline-block;
+    color: var(--first-color);
+    font-size: .88rem;
+    font-weight: var(--weight-600);
+    letter-spacing: .08rem;
+    text-transform: uppercase;
+    margin-bottom: .35rem;
+}
+
+/* Titre principal d’une zone */
+.skills__zone-title {
+    font-size: var(--h3-font-size);
+}
+
+/* Bloc compteur */
+.skills__counter {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 82px;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    background-color: var(--container-color);
+    border-radius: .85rem;
+    padding: .65rem .75rem;
+    font-size: .9rem;
+}
+
+/* Valeur principale du compteur */
+.skills__counter strong {
+    color: var(--first-color);
+    font-size: 1.6rem;
+    line-height: 1;
+}
+
+/* Grille des cartes de technologies */
+.skills__tech-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+/* Carte individuelle d’une technologie */
+.skills__tech-card {
+    position: relative;
+    min-height: 166px;
+    background-color: var(--container-color);
+    border: 1px solid var(--border-color);
+    border-radius: .9rem;
+    padding: 1rem 1rem 2.6rem;
+    overflow: visible;
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    transition: transform .35s ease, opacity .35s ease, border-color .35s ease, box-shadow .35s ease, background-color .35s ease;
+}
+
+/* Désactive le pseudo-élément décoratif */
+.skills__tech-card::before {
+    content: none;
+}
+
+/* Effet hover sur une carte technologie */
+.skills__tech-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--first-color);
+    box-shadow: 0 16px 35px hsla(0, 0%, 0%, .28);
+}
+
+/* Cache les éléments filtrés */
+.skills__tech-card.is-hidden,
+.skills__panel.is-hidden {
+    display: none;
+}
+
+/* Petit point lumineux décoratif */
+.skills__tech-dot {
+    position: absolute;
+    top: .85rem;
+    right: .85rem;
+    width: .65rem;
+    height: .65rem;
+    border-radius: 50%;
+    background-color: var(--first-color);
+    box-shadow: 0 0 18px var(--first-color);
+}
+
+/* Icône de la technologie */
+.skills__tech-icon {
+    display: inline-grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    margin-bottom: .85rem;
+    color: var(--first-color);
+    background-color: hsla(268, 77%, 58%, .1);
+    border-radius: 50%;
+    font-size: 2.05rem;
+    line-height: 1;
+}
+
+/* Taille spéciale pour les icônes Devicon */
+.skills__tech-icon[class*="devicon-"] {
+    font-size: 2.25rem;
+}
+
+/* Nom de la technologie */
+.skills__tech-name {
+    font-size: 1.05rem;
+    margin-bottom: .25rem;
+}
+
+/* Catégorie ou description courte */
+.skills__tech-label {
+    color: var(--text-color);
+    font-size: .9rem;
+    margin-bottom: 1rem;
+}
+
+/* Niveau de maîtrise affiché au hover */
+.skills__tech-level {
+    position: absolute;
+    left: 50%;
+    bottom: -.9rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 30px;
+    padding-inline: .85rem;
+    color: var(--white);
+    background-color: var(--first-color);
+    border: 1px solid var(--first-color);
+    border-radius: 999px;
+    font-size: .82rem;
+    font-weight: var(--weight-600);
+    letter-spacing: .02rem;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translate(-50%, 12px);
+    pointer-events: none;
+    box-shadow: 0 10px 24px hsla(0, 0%, 0%, .22);
+    transition: opacity .3s ease, transform .3s ease, background-color .3s ease, border-color .3s ease;
+}
+
+/* Affiche le niveau au hover/focus */
+.skills__tech-card:hover .skills__tech-level,
+.skills__tech-card:focus-within .skills__tech-level {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* Bloc Insights fixé lors du scroll */
+.skills__insights {
+    position: sticky;
+    top: calc(var(--header-height) + 3rem);
+}
+
+/* Grille des panels */
+.skills__insights-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    gap: 1rem;
+}
+
+/* Carte d’information */
+.skills__panel {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.1rem;
+    background-color: var(--container-color);
+    border: 1px solid var(--border-color);
+    border-radius: .9rem;
+    transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+
+/* Effet hover sur les panels */
+.skills__panel:hover {
+    transform: translateY(-5px);
+    border-color: var(--first-color);
+    box-shadow: 0 16px 32px hsla(0, 0%, 0%, .22);
+}
+
+/* Icône du panel */
+.skills__panel-icon {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    color: var(--white);
+    background-color: var(--first-color);
+    border-radius: .85rem;
+    box-shadow: 0 12px 26px hsla(268, 77%, 58%, .22);
+}
+
+/* Titre du panel */
+.skills__panel-title {
+    font-size: 1.1rem;
+    margin-bottom: .55rem;
+}
+
+/* Texte du panel */
+.skills__panel-text {
+    color: var(--text-color);
+    font-size: 1rem;
+    line-height: 1.65;
+    text-align: justify;
+}
