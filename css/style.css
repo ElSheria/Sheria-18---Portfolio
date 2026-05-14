@@ -1413,3 +1413,77 @@ input[name="color"],
     opacity: 1;
     transform: translateY(0);
 }
+
+/*---------------------------------- TESTIMONIALS ----------------------------------*/
+
+/* Section principale Testimonials */
+.testimonials {
+    background-color: var(--container-color);
+}
+
+/* Conteneur des témoignages */
+.testimonials__container {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* Description du témoignage */
+.testimonials__description {
+    margin-bottom: 1.75rem;
+    text-align: justify;
+}
+
+/* Supprime un pseudo-élément décoratif */
+.testimonials__description::before {
+    content: none;
+}
+
+/* Icône de citation */
+.testimonials__quote-icon {
+    width: 64px;
+    height: 64px;
+    display: inline-grid;
+    place-items: center;
+    color: var(--first-color);
+    background:
+        radial-gradient(circle at 35% 30%, hsla(268, 100%, 83%, .2), transparent 48%),
+        hsla(268, 77%, 58%, .1);
+    border: 1px solid var(--border-color);
+    border-radius: 1.25rem;
+    font-size: 2.25rem;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 14px 30px hsla(0, 0%, 0%, .18);
+    transition: transform .3s ease, color .3s ease, border-color .3s ease, background-color .3s ease;
+}
+
+/* Animation hover de l’icône citation */
+.testimonials__item:hover .testimonials__quote-icon {
+    color: var(--white);
+    background-color: var(--first-color);
+    border-color: var(--first-color);
+    transform: translateY(-4px) scale(1.04);
+}
+
+/* Conteneur des informations utilisateur */
+.testimonials__data {
+    display: flex;
+    align-items: center;
+    column-gap: 1.25rem;
+}
+
+/* Image de profil */
+.testimonials__img {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Nom de la personne */
+.testimonials__name {
+    font-size: var(--larger-font-size);
+}
+
+/* Métier ou identité de la personne */
+.testimonials__identity {
+    font-size: var(--large-font-size);
+}
