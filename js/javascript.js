@@ -235,3 +235,122 @@ themeLabels.forEach((label) => {
         }, 0)
     })
 })
+
+// EFFET D'ÉCRITURE DU TEXTE DANS LA PARTIE HERO
+
+// On récupère le texte animé grâce à son id "typing-text"
+const typingText = document.querySelector('#typing-text')
+
+// On prépare la liste des compétences qui doivent s'afficher une après l'autre
+const typingWords = [
+    // Premier texte affiché dans l'animation
+    'Développeur Web',
+
+    // Deuxième texte affiché dans l'animation
+    'Créateur de sites modernes',
+
+    // Troisième texte affiché dans l'animation
+    'Designer UI / UX',
+
+    // Quatrième texte affiché dans l'animation
+    'Développeur Fullstack',
+
+    // Cinquième texte affiché dans l'animation
+    'Freelance Web'
+]
+
+// On vérifie si l'élément du texte animé existe dans le HTML
+if (typingText) {
+    // On vérifie si l'utilisateur a demandé moins d'animations dans les paramètres de son navigateur
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    // On crée l'index du mot actuellement utilisé dans le tableau typingWords
+    let wordIndex = 0
+
+    // On crée l'index de la lettre actuellement affichée
+    let letterIndex = 0
+
+    // On indique si le texte est actuellement en train de s'effacer
+    let isDeleting = false
+
+    // On définit la vitesse d'écriture des lettres
+    const typingSpeed = 95
+
+    // On définit la vitesse d'effacement des lettres
+    const deletingSpeed = 55
+
+    // On définit le temps d'attente quand le mot est complètement écrit
+    const waitingSpeed = 1300
+
+    // Si l'utilisateur préfère réduire les animations
+    if (prefersReducedMotion) {
+        // On affiche directement le premier texte sans animation
+        typingText.textContent = typingWords[0]
+    } else {
+        // On vide le texte au départ pour éviter un décalage visuel au chargement
+        typingText.textContent = ''
+
+        // Fonction principale qui écrit, attend, efface et change de mot
+        function typeWriterEffect() {
+            // On récupère le mot actuel dans le tableau
+            const currentWord = typingWords[wordIndex]
+
+            // Si le texte n'est pas en train de s'effacer
+            if (!isDeleting) {
+                // On ajoute une lettre à l'affichage
+                letterIndex += 1
+
+                // On affiche le mot actuel jusqu'à la lettre en cours
+                typingText.textContent = currentWord.substring(0, letterIndex)
+
+                // Si le mot est écrit entièrement
+                if (letterIndex === currentWord.length) {
+                    // On indique que la prochaine étape sera l'effacement
+                    isDeleting = true
+
+                    // On attend avant de commencer à effacer
+                    setTimeout(typeWriterEffect, waitingSpeed)
+
+                    // On arrête cette exécution pour respecter le temps d'attente
+                    return
+                }
+
+                // On relance la fonction après la vitesse d'écriture
+                setTimeout(typeWriterEffect, typingSpeed)
+
+                // On arrête cette exécution
+                return
+            }
+
+            // Si le texte est en train de s'effacer
+            if (isDeleting) {
+                // On retire une lettre à l'affichage
+                letterIndex -= 1
+
+                // On affiche le mot actuel avec une lettre en moins
+                typingText.textContent = currentWord.substring(0, letterIndex)
+
+                // Si le mot est complètement effacé
+                if (letterIndex === 0) {
+                    // On indique que la prochaine étape sera l'écriture
+                    isDeleting = false
+
+                    // On passe au mot suivant
+                    wordIndex += 1
+
+                    // Si on dépasse le dernier mot
+                    if (wordIndex === typingWords.length) {
+                        // On revient au premier mot pour faire une boucle infinie
+                        wordIndex = 0
+                    }
+                }
+
+                // On relance la fonction après la vitesse d'effacement
+                setTimeout(typeWriterEffect, deletingSpeed)
+            }
+        }
+
+        // On lance l'effet d'écriture
+        typeWriterEffect()
+    }
+}
