@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    /* GOOGLE FONT */
+    --body-font: 'Jost', sans-serif;
+
+    /* VARIABLES CSS */
+    --header-height: 3.5rem;
+
+    /* COLORS */
+    --first-color: hsl(268, 77%, 58%);
+    --first-color-dark: hsl(268, 78%, 51%);
+    --first-color-light: hsl(268, 100%, 83%);
+    --nav-color: hsl(0, 0%, 2%);
+    --title-color: hsl(0, 0%, 87%);
+    --text-color: hsl(0, 0%, 69%);
+    --body-color: hsl(200, 12%, 5%);
+    --container-color: hsl(200, 10%, 8%);
+    --border-color: hsl(0, 0%, 20%);
+    --white: #fff;
+
+    /* FONT AND TYPOGRAPHY */
+    --big-font-size: 3rem;
+    --h1-font-size: 2.5rem;
+    --h2-font-size: 2.25rem;
+    --h3-font-size: 1.5rem;
+    --larger-font-size: 1.2rem;
+    --large-font-size: 1.125rem;
+
+    /* FONT WEIGHT */
+    --weight-300: 300;
+    --weight-400: 400;
+    --weight-600: 600;
+}
+
+/*---------------------------------- DARK THEME ----------------------------------*/
+#day-night:checked ~ * {
+    --nav-color: hsl(266, 78%, 98%);
+    --title-color: hsl(247, 27%, 31%);
+    --text-color: hsl(0, 0%, 41%);
+    --body-color: hsl(0, 0%, 100%);
+    --container-color: hsl(264, 14%, 93%);
+    --border-color: hsl(0, 0%, 87%);
+}
+
+/*---------------------------------- BASE ----------------------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--body-font);
+    font-size: var(--larger-font-size);
+    background-color: var(--body-color);
+    color: var(--text-color);
+}
+
+input,
+textarea,
+button {
+    font-family: var(--body-font);
+    font-size: var(--larger-font-size);
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+main {
+    background-color: var(--body-color);
+    color: var(--text-color);
+    overflow: hidden;
+}
+
+h1,
+h2,
+h3 {
+    color: var(--title-color);
+    font-weight: var(--weight-600);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Cache proprement les inputs de contrôle pour éviter le retour en haut de page */
+input[name="color"],
+#toggler,
+#day-night {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/*---------------------------------- REUSABLE CSS CLASSES ----------------------------------*/
+.container {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 1rem;
+}
+
+.grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.section {
+    padding-block: 6rem;
+}
+
+.section__title {
+    font-size: var(--h1-font-size);
+    font-weight: var(--weight-400);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.section__title::before {
+    content: attr(data-title);
+    display: block;
+    color: var(--first-color);
+    font-size: var(--large-font-size);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5em;
+}
+
+.title-center {
+    text-align: center;
+    margin-bottom: 3rem;
+}
