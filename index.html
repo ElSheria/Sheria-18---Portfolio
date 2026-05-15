@@ -873,7 +873,7 @@
                     </div>
                 </div>
 
-                <form action="https://formspree.io/f/xrejwlko" method="POST" class="contact__form">
+                <form action="https://formspree.io/f/xrejwlko" method="POST" class="contact__form" id="contact-form">
                     <div class="form__group">
                         <div class="form__input">
                             <input type="text" name="name" placeholder="Nom" class="input__control" required>
@@ -922,6 +922,25 @@
             </div>
         </div>
     </footer>
+
+    <!---------------------------------- Contact Toast Notification ---------------------------------->
+    <div class="contact-toast" id="contact-toast" role="status" aria-live="polite" aria-atomic="true">
+        <div class="contact-toast__icon">
+            <i class="fa-solid fa-paper-plane"></i>
+        </div>
+
+        <div class="contact-toast__content">
+            <span class="contact-toast__title" id="contact-toast-title">Envoi du message</span>
+            <p class="contact-toast__text" id="contact-toast-text">Votre message est en cours d’envoi...</p>
+
+            <div class="contact-toast__skeleton" id="contact-toast-skeleton">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <span class="contact-toast__progress"></span>
+    </div>
 
     <script src="js/javascript.js"></script>
 </body>

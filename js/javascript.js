@@ -503,3 +503,191 @@ revealElements.forEach((element) => {
     // On lance l'observation de cet élément
     revealObserver.observe(element)
 })
+
+// ENVOI DU FORMULAIRE CONTACT SANS REDIRECTION AVEC TOAST
+
+// Sélectionne le formulaire qui possède l'id "contact-form"
+const contactForm = document.querySelector('#contact-form')
+// Sélectionne la notification toast globale
+const contactToast = document.querySelector('#contact-toast')
+// Sélectionne le titre affiché dans le toast
+const contactToastTitle = document.querySelector('#contact-toast-title')
+// Sélectionne le texte/message affiché dans le toast
+const contactToastText = document.querySelector('#contact-toast-text')
+
+// Variable qui servira à stocker le timer du toast
+// Cela permet d'annuler un ancien timer avant d'en créer un nouveau
+let contactToastTimeout = null
+
+// Fonction qui affiche une notification toast
+// type = loading / success / error
+// title = titre affiché
+// message = texte affiché
+function showContactToast(type, title, message) {
+
+    // Vérifie que tous les éléments du toast existent dans le HTML
+    // Si un élément manque, on arrête la fonction immédiatement
+    if (!contactToast || !contactToastTitle || !contactToastText) return
+
+    // Supprime l'ancien timer si un toast était déjà affiché
+    clearTimeout(contactToastTimeout)
+
+    // Retire toutes les anciennes classes du toast
+    // Cela permet de réinitialiser son état avant de le réafficher
+    contactToast.classList.remove('is-loading', 'is-success', 'is-error', 'show')
+
+    // Force le navigateur à recalculer le rendu du toast
+    // Très utile pour relancer correctement les animations CSS
+    contactToast.offsetHeight
+
+    // Ajoute la classe "show" pour afficher le toast
+    // Ajoute aussi dynamiquement :
+    // is-loading OU is-success OU is-error
+    contactToast.classList.add('show', `is-${type}`)
+
+    // Change le texte du titre du toast
+    contactToastTitle.textContent = title
+
+    // Change le message du toast
+    contactToastText.textContent = message
+
+    // Si le toast n'est PAS en mode loading
+    // alors on le cache automatiquement après 6 secondes
+    if (type !== 'loading') {
+
+        // Lance un timer
+        contactToastTimeout = setTimeout(() => {
+
+            // Retire la classe show pour cacher le toast
+            contactToast.classList.remove('show')
+
+        }, 6000) // 6000ms = 6 secondes
+    }
+}
+
+// Vérifie que le formulaire existe avant d'ajouter les événements
+if (contactForm) {
+
+    // Écoute l'événement submit du formulaire
+    contactForm.addEventListener('submit', async (event) => {
+
+        // Empêche le rechargement/redirection classique du formulaire
+        event.preventDefault()
+
+        // Sélectionne le bouton submit du formulaire
+        const submitButton = contactForm.querySelector('button[type="submit"]')
+
+        // Récupère automatiquement toutes les données du formulaire
+        // (nom, email, message, etc.)
+        const formData = new FormData(contactForm)
+
+        // Vérifie que le bouton existe
+        if (submitButton) {
+
+            // Désactive le bouton pendant l'envoi
+            // pour éviter plusieurs clics
+            submitButton.disabled = true
+
+            // Change le texte du bouton
+            submitButton.textContent = 'Envoi...'
+        }
+
+        // Affiche le toast de chargement
+        showContactToast(
+
+            // Type du toast
+            'loading',
+
+            // Titre du toast
+            'Envoi du message',
+
+            // Message affiché
+            'Patientez quelques secondes, votre message est en cours d’envoi.'
+        )
+
+        // Bloc try = essaye d'exécuter le code
+        try {
+
+            // Envoie les données vers le serveur avec fetch
+            const response = await fetch(contactForm.action, {
+
+                // Méthode HTTP utilisée
+                method: 'POST',
+
+                // Données envoyées
+                body: formData,
+
+                // Headers HTTP
+                headers: {
+                    // Demande une réponse JSON
+                    Accept: 'application/json'
+                }
+            })
+
+            // Vérifie si la requête a réussi
+            // response.ok = true si statut 200-299
+            if (response.ok) {
+
+                // Réinitialise tous les champs du formulaire
+                contactForm.reset()
+
+                // Affiche un toast succès
+                showContactToast(
+                    // Type du toast
+                    'success',
+
+                    // Titre
+                    'Message envoyé avec succès',
+
+                    // Message
+                    'Merci pour votre message. Je vous répondrai dès que possible.'
+                )
+
+            } else {
+
+                // Affiche un toast erreur si le serveur répond avec une erreur
+                showContactToast(
+
+                    // Type du toast
+                    'error',
+
+                    // Titre
+                    'Erreur lors de l’envoi',
+
+                    // Message
+                    'Le message n’a pas pu être envoyé. Veuillez réessayer.'
+                )
+            }
+
+        // Bloc catch = exécuté si erreur réseau/internet
+        } catch (error) {
+
+            // Affiche une erreur de connexion
+            showContactToast(
+
+                // Type du toast
+                'error',
+
+                // Titre
+                'Connexion impossible',
+
+                // Message
+                'Vérifiez votre connexion internet puis réessayez.'
+            )
+
+        // Bloc finally = exécuté dans tous les cas
+        // succès OU erreur
+        } finally {
+
+            // Vérifie que le bouton existe
+            if (submitButton) {
+
+                // Réactive le bouton
+                submitButton.disabled = false
+
+                // Remet le texte normal du bouton
+                submitButton.textContent = 'Envoyer'
+            }
+        }
+    })
+}
