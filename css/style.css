@@ -1780,32 +1780,83 @@ input[name="color"],
     }
 }
 
-/* Responsive : petits écrans */
-@media screen and (max-width: 576px) {
+/*---------------------------------- BACK TO TOP BUTTON ----------------------------------*/
 
-    /* Ajustement du toast sur mobile */
-    .contact-toast {
-        top: 1rem;
-        grid-template-columns: auto 1fr;
-        padding: .9rem;
-    }
+/* Bouton retour en haut */
+.back-to-top {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 5.9rem;
+    z-index: 950;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    color: var(--first-color);
 
-    /* Réduction de la taille de l’icône */
-    .contact-toast__icon {
-        width: 44px;
-        height: 44px;
-        font-size: 1rem;
-    }
+    /* Couleur de fond légère */
+    background-color: hsla(0, 0%, 100%, .08);
 
-    /* Taille du titre sur mobile */
-    .contact-toast__title {
-        font-size: .95rem;
-    }
+    /* Mélange dynamique avec la couleur principale */
+    background-color: color-mix(in srgb, var(--first-color) 14%, transparent);
 
-    /* Taille du texte sur mobile */
-    .contact-toast__text {
-        font-size: .88rem;
-    }
+    border: 1.5px solid var(--first-color);
+    border-radius: 50%;
+    cursor: pointer;
+
+    /* Caché par défaut */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    /* Position et taille initiales avant animation */
+    transform: translateY(.8rem) scale(.85);
+
+    /* Ombre du bouton */
+    box-shadow: 0 12px 28px hsla(0, 0%, 0%, .22);
+
+    /* Effet glassmorphism */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    /* Transitions fluides */
+    transition:
+        opacity .3s ease,
+        visibility .3s ease,
+        transform .3s ease,
+        background-color .3s ease,
+        border-color .3s ease,
+        color .3s ease;
+}
+
+/* Icône à l’intérieur du bouton */
+.back-to-top i {
+    position: relative;
+    z-index: 2;
+    font-size: 1rem;
+    transition: transform .3s ease;
+}
+
+/* État visible du bouton */
+.back-to-top.show {
+    opacity: .82;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+/* Effet hover du bouton */
+.back-to-top:hover {
+    opacity: 1;
+    color: var(--white);
+    background-color: var(--first-color);
+    border-color: var(--first-color);
+    transform: translateY(-4px) scale(1.03);
+}
+
+/* Animation de l’icône au hover */
+.back-to-top:hover i {
+    transform: translateY(-3px);
 }
 
 /*---------------------------------- BEAUTIFUL EFFECTS ----------------------------------*/
@@ -2790,6 +2841,42 @@ body.is-loading {
 
     .page-loader__bar {
         width: 180px;
+    }
+
+    /* Ajustement du toast sur mobile */
+    .contact-toast {
+        top: 1rem;
+        grid-template-columns: auto 1fr;
+        padding: .9rem;
+    }
+
+    /* Réduction de la taille de l’icône */
+    .contact-toast__icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1rem;
+    }
+
+    /* Taille du titre sur mobile */
+    .contact-toast__title {
+        font-size: .95rem;
+    }
+
+    /* Taille du texte sur mobile */
+    .contact-toast__text {
+        font-size: .88rem;
+    }
+
+    .back-to-top {
+        right: 1.4rem;
+        bottom: 5.2rem;
+        width: 40px;
+        height: 40px;
+        opacity: .72;
+    }
+
+    .back-to-top i {
+        font-size: .9rem;
     }
 }
 

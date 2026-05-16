@@ -691,3 +691,38 @@ if (contactForm) {
         }
     })
 }
+
+// BOUTON RETOUR EN HAUT
+
+// On récupère le bouton qui permet de remonter en haut de la page
+const backToTopButton = document.querySelector('#back-to-top')
+
+// Fonction qui affiche ou cache le bouton selon la position du scroll
+function toggleBackToTopButton() {
+    // Si le bouton n'existe pas dans le HTML, on arrête la fonction
+    if (!backToTopButton) return
+
+    // Si l'utilisateur a scrollé assez bas, on affiche le bouton
+    if (window.scrollY > 450) {
+        backToTopButton.classList.add('show')
+    } else {
+        backToTopButton.classList.remove('show')
+    }
+}
+
+// Si le bouton existe
+if (backToTopButton) {
+    // Quand on clique sur le bouton, on remonte doucement tout en haut
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    })
+}
+
+// À chaque scroll, on vérifie si le bouton doit apparaître ou disparaître
+document.addEventListener('scroll', toggleBackToTopButton)
+
+// On vérifie aussi une première fois au chargement de la page
+toggleBackToTopButton()
