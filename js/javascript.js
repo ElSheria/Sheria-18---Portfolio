@@ -577,6 +577,17 @@ if (contactForm) {
         // Sélectionne le bouton submit du formulaire
         const submitButton = contactForm.querySelector('button[type="submit"]')
 
+        // Sélectionne le champ sujet visible du formulaire
+        const contactSubject = document.querySelector('#contact-subject')
+
+        // Sélectionne le champ caché qui permet d'afficher le sujet dans l'e-mail reçu
+        const contactSubjectCopy = document.querySelector('#contact-subject-copy')
+
+        // Copie la valeur du sujet visible dans le champ caché avant de créer FormData
+        if (contactSubject && contactSubjectCopy) {
+            contactSubjectCopy.value = contactSubject.value
+        }
+
         // Récupère automatiquement toutes les données du formulaire
         // (nom, email, message, etc.)
         const formData = new FormData(contactForm)
