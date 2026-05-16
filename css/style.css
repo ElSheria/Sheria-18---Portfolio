@@ -1679,44 +1679,6 @@ input[name="color"],
     animation: toastProgress 6s linear forwards;
 }
 
-/* Skeleton affiché pendant le chargement/envoi */
-.contact-toast__skeleton {
-    display: none;
-    row-gap: .45rem;
-    margin-top: .75rem;
-}
-
-/* Lignes du skeleton loader */
-.contact-toast__skeleton span {
-    display: block;
-    height: .65rem;
-    border-radius: 999px;
-    background:
-        linear-gradient(
-            90deg,
-            hsla(0, 0%, 100%, .08),
-            hsla(0, 0%, 100%, .22),
-            hsla(0, 0%, 100%, .08)
-        );
-    background-size: 220% 100%;
-    animation: toastSkeleton 1.1s ease-in-out infinite;
-}
-
-/* Première ligne du skeleton */
-.contact-toast__skeleton span:first-child {
-    width: 85%;
-}
-
-/* Deuxième ligne du skeleton */
-.contact-toast__skeleton span:last-child {
-    width: 58%;
-}
-
-/* Affiche le skeleton pendant le chargement */
-.contact-toast.is-loading .contact-toast__skeleton {
-    display: grid;
-}
-
 /* Animation infinie de la barre pendant le chargement */
 .contact-toast.is-loading .contact-toast__progress {
     animation: loadingProgress 1.2s ease-in-out infinite;
@@ -1766,17 +1728,6 @@ input[name="color"],
 
     100% {
         transform: translateX(100%) scaleX(.35);
-    }
-}
-
-/* Animation brillante du skeleton loader */
-@keyframes toastSkeleton {
-    0% {
-        background-position: 120% 0;
-    }
-
-    100% {
-        background-position: -120% 0;
     }
 }
 
