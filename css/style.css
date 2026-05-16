@@ -155,8 +155,10 @@ input[name="color"],
     position: fixed;
     right: 0;
     bottom: 20%;
-    padding: 1rem;
-    width: 220px;
+    width: fit-content;
+    min-width: 0;
+    height: auto;
+    padding: 1rem .95rem .9rem;
     border: 1px solid var(--border-color);
     background-color: var(--container-color);
     border-radius: 0.5rem;
@@ -221,8 +223,14 @@ input[name="color"],
 /* Grille contenant toutes les couleurs */
 .style__switcher-colors {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: .5rem;
+    grid-template-columns: repeat(3, 30px);
+    grid-auto-rows: 30px;
+    align-items: center;
+    justify-content: start;
+    gap: .65rem .95rem;
+    width: max-content;
+    margin-top: .65rem;
+    margin-bottom: 0;
 }
 
 /* Style de chaque cercle de couleur */
@@ -233,121 +241,82 @@ input[name="color"],
     cursor: pointer;
 }
 
+/* Sécurité : les anciennes couleurs supprimées ne doivent plus occuper d'espace */
+.style__switcher-colors .color-7,
+.style__switcher-colors .color-8,
+.style__switcher-colors .color-9,
+.style__switcher-colors .color-10 {
+    display: none;
+}
+
 /* Couleur numéro 1 */
 .color-1 {
-    background-color: hsl(225, 35%, 51%);
+    background-color: hsl(351, 85%, 51%);
 }
 
 /* Couleur numéro 2 */
 .color-2 {
-    background-color: hsl(351, 85%, 51%);
+    background-color: hsl(271, 76%, 53%);
 }
 
 /* Couleur numéro 3 */
 .color-3 {
-    background-color: hsl(271, 76%, 53%);
+    background-color: hsl(225, 73%, 57%);
 }
+
 
 /* Couleur numéro 4 */
 .color-4 {
-    background-color: hsl(225, 73%, 57%);
+    background-color: hsl(19, 96%, 52%);
 }
 
 /* Couleur numéro 5 */
 .color-5 {
-    background-color: hsl(43, 74%, 49%);
+    background-color: hsl(88, 65%, 43%);
 }
 
 /* Couleur numéro 6 */
 .color-6 {
-    background-color: hsl(339, 81%, 66%);
-}
-
-/* Couleur numéro 7 */
-.color-7 {
-    background-color: hsl(80, 61%, 50%);
-}
-
-/* Couleur numéro 8 */
-.color-8 {
-    background-color: hsl(19, 96%, 52%);
-}
-
-/* Couleur numéro 9 */
-.color-9 {
-    background-color: hsl(88, 65%, 43%);
-}
-
-/* Couleur numéro 10 */
-.color-10 {
     background-color: hsl(42, 100%, 50%);
 }
 
 /* Variables CSS appliquées quand la couleur 1 est sélectionnée */
 #color-1:checked ~ * {
-    --first-color: hsl(252, 35%, 51%);
-    --first-color-dark: hsl(252, 25%, 51%);
-    --first-color-light: hsl(252, 100%, 83%);
-}
-
-/* Variables CSS appliquées quand la couleur 2 est sélectionnée */
-#color-2:checked ~ * {
     --first-color: hsl(351, 85%, 51%);
     --first-color-dark: hsl(351, 75%, 51%);
     --first-color-light: hsl(351, 100%, 83%);
 }
 
-/* Variables CSS appliquées quand la couleur 3 est sélectionnée */
-#color-3:checked ~ * {
+/* Variables CSS appliquées quand la couleur 2 est sélectionnée */
+#color-2:checked ~ * {
     --first-color: hsl(271, 76%, 53%);
     --first-color-dark: hsl(271, 60%, 53%);
     --first-color-light: hsl(271, 100%, 83%);
 }
 
-/* Variables CSS appliquées quand la couleur 4 est sélectionnée */
-#color-4:checked ~ * {
+/* Variables CSS appliquées quand la couleur 3 est sélectionnée */
+#color-3:checked ~ * {
     --first-color: hsl(225, 73%, 57%);
     --first-color-dark: hsl(225, 63%, 57%);
     --first-color-light: hsl(225, 100%, 83%);
 }
 
-/* Variables CSS appliquées quand la couleur 5 est sélectionnée */
-#color-5:checked ~ * {
-    --first-color: hsl(43, 74%, 49%);
-    --first-color-dark: hsl(43, 64%, 49%);
-    --first-color-light: hsl(43, 100%, 83%);
-}
-
-/* Variables CSS appliquées quand la couleur 6 est sélectionnée */
-#color-6:checked ~ * {
-    --first-color: hsl(339, 81%, 66%);
-    --first-color-dark: hsl(339, 71%, 66%);
-    --first-color-light: hsl(339, 100%, 83%);
-}
-
-/* Variables CSS appliquées quand la couleur 7 est sélectionnée */
-#color-7:checked ~ * {
-    --first-color: hsl(80, 61%, 50%);
-    --first-color-dark: hsl(80, 51%, 50%);
-    --first-color-light: hsl(80, 100%, 83%);
-}
-
-/* Variables CSS appliquées quand la couleur 8 est sélectionnée */
-#color-8:checked ~ * {
+/* Variables CSS appliquées quand la couleur 4 est sélectionnée */
+#color-4:checked ~ * {
     --first-color: hsl(19, 96%, 52%);
     --first-color-dark: hsl(19, 86%, 52%);
     --first-color-light: hsl(19, 100%, 83%);
 }
 
-/* Variables CSS appliquées quand la couleur 9 est sélectionnée */
-#color-9:checked ~ * {
+/* Variables CSS appliquées quand la couleur 5 est sélectionnée */
+#color-5:checked ~ * {
     --first-color: hsl(88, 65%, 43%);
     --first-color-dark: hsl(88, 55%, 43%);
     --first-color-light: hsl(88, 100%, 83%);
 }
 
-/* Variables CSS appliquées quand la couleur 10 est sélectionnée */
-#color-10:checked ~ * {
+/* Variables CSS appliquées quand la couleur 6 est sélectionnée */
+#color-6:checked ~ * {
     --first-color: hsl(42, 100%, 50%);
     --first-color-dark: hsl(42, 85%, 50%);
     --first-color-light: hsl(42, 100%, 83%);
@@ -1736,11 +1705,11 @@ input[name="color"],
 /* Bouton retour en haut */
 .back-to-top {
     position: fixed;
-    right: 1.5rem;
+    right: 13.3px;
     bottom: 5.9rem;
     z-index: 950;
-    width: 44px;
-    height: 44px;
+    width: 41.5px;
+    height: 41.5px;
     display: grid;
     place-items: center;
     color: var(--first-color);
