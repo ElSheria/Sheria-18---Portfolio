@@ -1708,8 +1708,8 @@ input[name="color"],
     right: 13.3px;
     bottom: 5.9rem;
     z-index: 950;
-    width: 41.5px;
-    height: 41.5px;
+    width: 49px;
+    height: 49px;
     display: grid;
     place-items: center;
     color: var(--first-color);
@@ -2591,6 +2591,11 @@ body.is-loading {
 
     .work__btn--dark {
         width: 3.1rem;
+    }
+
+    .back-to-top {
+        width: 41px;
+        height: 41.5px;
     }
 
     .footer__copyright {
