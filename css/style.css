@@ -1480,7 +1480,7 @@ input[name="color"],
 /* Icône des informations de contact */
 .contact__icon {
     color: var(--first-color);
-    font-size: var(--large-font-size);
+    font-size: var(--h3-font-size);
     line-height: 1.8;
 }
 
@@ -1492,6 +1492,53 @@ input[name="color"],
 /* Texte des données de contact */
 .contact__data {
     font-size: var(--large-font-size);
+}
+
+/* Lien WhatsApp intégré dans les informations de contact */
+.contact__whatsapp-link {
+    display: inline-flex;
+    align-items: center;
+    column-gap: .55rem;
+    margin-top: .85rem;
+    color: var(--first-color);
+    border: 1px solid var(--first-color);
+    padding: .55rem .95rem;
+    border-radius: .5rem;
+    font-size: var(--large-font-size);
+    font-weight: var(--weight-600);
+    transition:
+        color .3s ease,
+        background-color .3s ease,
+        border-color .3s ease,
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+/* Force le texte WhatsApp à prendre sa propre ligne */
+.contact__item--whatsapp .contact__data {
+    display: block;
+    line-height: 1.6;
+}
+
+/* Force le bouton WhatsApp à rester en dessous du texte */
+.contact__item--whatsapp .contact__whatsapp-link {
+    display: inline-flex;
+    width: fit-content;
+    margin-top: .85rem;
+}
+
+/* Icône du lien WhatsApp */
+.contact__whatsapp-link i {
+    font-size: .95rem;
+}
+
+/* Effet hover du lien WhatsApp */
+.contact__whatsapp-link:hover {
+    color: var(--white);
+    background-color: var(--first-color);
+    border-color: var(--first-color);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 26px hsla(268, 77%, 58%, .2);
 }
 
 /* Groupe de champs du formulaire */
@@ -2790,6 +2837,10 @@ body.is-loading {
     /* Taille du texte sur mobile */
     .contact-toast__text {
         font-size: .88rem;
+    }
+
+    .contact__item--whatsapp .contact__whatsapp-link {
+        margin-top: .9rem;
     }
 
     .back-to-top {
