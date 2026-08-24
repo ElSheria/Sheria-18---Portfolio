@@ -148,6 +148,27 @@ Présentation professionnelle réalisée sur Canva avec des visuels soignés, un
 Pour voir les animations, il faut ouvrir le projet puis lancer le mode présentation avec :
 Ctrl + Alt + P
 
+### MukePha
+
+Maquette UI/UX d’un ERP pharmaceutique réalisée sur Figma pour faciliter la gestion quotidienne de plusieurs pharmacies.
+
+MukePha propose deux espaces distincts : un espace administrateur permettant de superviser l’ensemble des pharmacies et un espace destiné aux gérants pour assurer la gestion opérationnelle de leur établissement.
+
+La solution a été pensée autour de plusieurs fonctionnalités telles que la gestion des ventes, des produits, des stocks, des fournisseurs, des factures, des présences et des congés, avec des tableaux de bord adaptés aux différents profils utilisateurs.
+
+Le réseau présenté dans la maquette comprend les pharmacies Centre-Ville, Lemba et Limete.
+
+Le prototype disponible dans mon portfolio présente principalement le parcours du gérant d’une pharmacie.
+
+Technologies utilisées :
+
+- Figma
+- UI / UX
+- Design d'interface
+- ERP
+- Dashboard
+- Prototype
+
 ### Structure du projet
 
 Sheria-18---Portfolio/
